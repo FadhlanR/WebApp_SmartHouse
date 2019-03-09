@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -yq google-chrome-stable
 # set working directory
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
-RUN chmod 777 /usr/src/app
 
 # add `/usr/src/app/node_modules/.bin` to $PATH
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
@@ -21,6 +20,7 @@ RUN npm install -g @angular/cli@1.7.1
 
 # add app
 COPY . /usr/src/app
+RUN chmod 777 /usr/src/app
 
 # start app
 CMD ng serve --host 0.0.0.0
