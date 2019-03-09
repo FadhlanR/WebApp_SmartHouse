@@ -1,0 +1,16 @@
+.nav-link  {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.nav-item {
+  background-color: #f1f1f1;
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active, .nav-link:hover {
+  background-color: #007bff;
+}

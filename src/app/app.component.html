@@ -1,0 +1,18 @@
+<body>
+  <div class="jumbotron text-center"> <!-->  mulai Judul Utama --> 
+    <h2>SMART HOUSE</h2>
+  </div> <!-->  akhir Judul Utama --> 
+  
+  <div class="container"> <!-->  mulai container -->
+    <ul class="nav nav-pills nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToSearchComponent()">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToCreateComponent()">Create</a>
+      </li>
+    </ul>
+    <br>
+    <router-outlet></router-outlet>
+  </div>
+</body>

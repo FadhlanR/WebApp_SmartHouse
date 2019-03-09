@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12">
+    <form class="form-inline" (ngSubmit)="f.form.valid && getHouseData()" #f="ngForm" validate>
+      <table>
+        <tr>
+          <th><label style="margin-right: 1em">House Id</label></th>
+          <th>:</th>
+          <td><input type="text" class="form-control" [(ngModel)]="houseId" name="houseId"></td>
+          <td><button type="submit" class="btn btn-primary">Search</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+<br>
+<div class="col-md-12" *ngIf="house.houseId !== undefined">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>House Data</h4>
+      <table class="table">
+        <tr>
+          <th>Address</th>
+          <th>:</th>
+          <td>{{house.location}}</td>
+        </tr>
+        <tr>
+          <th>Owner</th>
+          <th>:</th>
+          <td>{{house.owner}}</td>
+        </tr>
+      </table>
+      <button class="btn btn-primary" (click)="showCryptoKeyModal()">Get Cryptokey</button>
+      <button class="btn btn-danger" (click)="showTransactionFormModal()">Create Transaction</button>
+      <button class="btn btn-info" (click)="getTransaction()">Get Transaction</button>
+    </div>
+    <div class="col-md-6" *ngIf="house.transaction !== undefined">
+        <h4>Transaction Data</h4>
+        <table class="table">
+          <tr>
+            <th>Notary</th>
+            <th>:</th>
+            <td>{{house.transaction.notary}}</td>
+          </tr>
+          <tr>
+            <th>Buyer</th>
+            <th>:</th>
+            <td>{{house.transaction.buyer}}</td>
+          </tr>
+          <tr>
+            <th>Notary Fee</th>
+            <th>:</th>
+            <td>{{house.transaction.notaryPrice}} Eth</td>
+          </tr>
+          <tr>
+            <th>Price (DP)</th>
+            <th>:</th>
+            <td>{{house.transaction.amountPrice}} Eth ({{house.transaction.depositAmount}} Eth)</td>
+          </tr>
+        </table>
+        <button class="btn btn-info" style="margin-right: 0.5em" (click)="showPayModal()">Pay</button>
+        <button class="btn btn-success" style="margin-right: 0.5em" (click)="settle()">Settle</button>
+        <button class="btn btn-warning" (click)="download()">Download</button>
+      </div>
+  </div>
+</div>
+

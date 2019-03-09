@@ -1,0 +1,49 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Create New Transaction</h4>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="f.form.valid && createTransaction()" #f="ngForm" validate *ngIf="loading == false && success == false && failed == false">
+      <table>
+        <tr>
+          <th><label style="margin-right: 1em">Seller</label></th>
+          <th><label style="margin-right: 1em">:</label></th>
+          <td><input type="text" disabled class="form-control" [(ngModel)]="transaction.seller" name="seller"></td>
+        </tr>
+        <tr>
+          <th><label style="margin-right: 1em">Buyer</label></th>
+          <th><label style="margin-right: 1em">:</label></th>
+          <td><input type="text" required class="form-control" [(ngModel)]="transaction.buyer" name="buyer"></td>
+        </tr>
+        <tr>
+          <th><label style="margin-right: 1em">Notary Fee (Eth)</label></th>
+          <th><label style="margin-right: 1em">:</label></th>
+          <td><input type="text" required class="form-control" [(ngModel)]="transaction.notaryPrice" name="notaryPrice"></td>
+        </tr>
+        <tr>
+          <th><label style="margin-right: 1em">Price (Eth)</label></th>
+          <th><label style="margin-right: 1em">:</label></th>
+          <td><input type="text" required class="form-control" [(ngModel)]="transaction.amountPrice" name="amountPrice"></td>
+        </tr>
+        <tr>
+          <th><label style="margin-right: 1em">DP (Eth)</label></th>
+          <th><label style="margin-right: 1em">:</label></th>
+          <td><input type="text" required class="form-control" [(ngModel)]="transaction.depositAmount" name="depositAmount"></td>
+        </tr>
+        <tr>
+          <th><label style="margin-right: 1em">AJB File</label></th>
+          <th><label style="margin-right: 1em">:</label></th>
+          <td><input type="file" required id="filePicker" (change)="handleFileSelect($event)"></td>
+        </tr>
+        <tr>
+          <th></th>
+          <th></th>
+          <td style="text-align: right"><button type="submit" class="btn btn-primary">Create</button></td>
+        </tr>          
+      </table>
+    </form>
+    <img *ngIf="loading === true && success == false && failed == false" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <p *ngIf="loading == false && success == true && failed == false">Transaction Success</p>
+    <p *ngIf="loading == false && success == false && failed == true">Transaction Failed</p>
+  </div>
+</div>
